@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Numbers</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('form').on('submit', function(e) {
+                e.preventDefault(); // Prevent the default form submission
+                var numbers = $('input[name="numbers"]').val();
+
+                $.ajax({
+                    url: '/process-numbers',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({numbers: numbers}),
+                    success: function(response) {
+                        alert('Numbers entered successfully');
+                    },
+                    error: function() {
+                        alert('Error processing numbers');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<h2>Enter Numbers for Binary Search Tree</h2>
+<form action="/process-numbers" method="POST">
+    <label >Numbers:</label>
+    <input
+            type="text"
+            name="numbers"
+            placeholder="Enter numbers separated by commas"
+            required
+    />
+    <button type="submit">Submit</button>
+</form>
+<br />
+<button onclick="location.href='/previous-trees'">
+    Show Previous Tree
+</button>
+</body>
+</html>

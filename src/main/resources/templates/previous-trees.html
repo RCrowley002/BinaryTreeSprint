@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Previous Trees</title>
+</head>
+<body>
+<h1>Previous Trees</h1>
+<div>
+    <p th:if="${message}" th:text="${message}">Default message if none is provided</p>
+    <div th:each="tree : ${trees}">
+        <p th:text="${tree.numbers}">Tree numbers</p>
+        <p th:text="${tree.treeStructure}">Tree structure</p>
+    </div>
+</div>
+</body>
+</html>
